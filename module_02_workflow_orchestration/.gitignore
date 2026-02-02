@@ -1,0 +1,18 @@
+# ---------- Terraform ----------
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+
+# ---------- Airflow ----------
+airflow/logs/
+airflow/__pycache__/
+airflow/.env
+airflow/config/
+
+# ---------- Python ----------
+__pycache__/
+*.pyc
+
+# ---------- OS ----------
+.DS_Store
