@@ -23,4 +23,5 @@ resource "google_storage_bucket" "taxi_data" {
 resource "google_bigquery_dataset" "taxi_dataset" {
   dataset_id = "taxi_data"
   location   = var.region
+  delete_contents_on_destroy = true
 }
