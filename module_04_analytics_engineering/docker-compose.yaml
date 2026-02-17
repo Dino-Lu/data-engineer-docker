@@ -1,0 +1,30 @@
+services:
+  loader:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./secrets/gcp.json:/secrets/gcp.json:ro
+    environment:
+      - GOOGLE_APPLICATION_CREDENTIALS=/secrets/gcp.json
+      - GCP_PROJECT_ID=peppy-tiger-486913-i5
+      - GCS_BUCKET=peppy-tiger-486913-i5-nytaxi-lake
+      - BQ_DATASET=nytaxi
+      - GCS_PREFIX=nyc_taxi
+      - GCS_PREFIX_NORM=nyc_taxi_normalized_v3
+    command: ["python", "/app/scripts/load_taxi_data.py"]
+  
+  fhv_loader:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./secrets/gcp.json:/secrets/gcp.json:ro
+    environment:
+      GOOGLE_APPLICATION_CREDENTIALS: /secrets/gcp.json
+      GCP_PROJECT_ID: peppy-tiger-486913-i5
+      BQ_DATASET: nytaxi
+      BQ_TABLE: fhv_tripdata
+      GCS_BUCKET: peppy-tiger-486913-i5-nytaxi-lake
+      GCS_PREFIX: nyc_taxi/fhv/2019
+    command: ["python", "/app/scripts/load_fhv_2019.py"]
