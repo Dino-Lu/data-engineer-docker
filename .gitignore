@@ -211,3 +211,53 @@ __marimo__/
 
 # OS
 .DS_Store
+
+# ---- Data Engineering / Zoomcamp extras ----
+
+# Airflow (logs can explode in size)
+**/airflow/logs/
+**/airflow/.env
+**/airflow/config/airflow.cfg
+**/airflow/webserver_config.py
+**/airflow/airflow.db
+**/airflow/*.pid
+
+# Docker / local runtime
+**/.pytest_cache/
+**/.terraform/
+#**/.terraform.lock.hcl
+
+# Terraform state (never commit)
+**/terraform.tfstate
+**/terraform.tfstate.*
+**/*.tfstate
+**/*.tfstate.*
+**/crash.log
+**/crash.*.log
+
+# Credentials / secrets (never commit)
+**/gcs.json
+**/*service-account*.json
+**/*credentials*.json
+**/.boto
+**/.config/gcloud/application_default_credentials.json
+
+# Local downloads / data dumps
+**/*.csv
+**/*.csv.gz
+**/*.jsonl
+**/*.avro
+**/*.zip
+**/*.gz
+**/*.tmp
+**/data/
+**/tmp/
+
+secrets/
+*.json
+.bruin.yml
+logs/runs
+logs/*.log
+*.py[cod]
+
+yellow_2025_11_4part/
